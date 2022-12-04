@@ -1,0 +1,55 @@
+<div class="overflow-x-auto relative">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead
+      class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="py-3 px-6">Id</th>
+        <th scope="col" class="py-3 px-6">First name</th>
+        <th scope="col" class="py-3 px-6">Last name</th>
+        <th scope="col" class="py-3 px-6">Email</th>
+        <th scope="col" class="py-3 px-6">Address</th>
+        <th scope="col" class="py-3 px-6">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let api of apidata | orderBy : 'name'; index as a"
+        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+      >
+        <th
+          scope="row"
+          class="py-2 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ a + 1 }}
+        </th>
+        <td class="py-2 px-6">{{ api.name }}</td>
+        <td class="py-2 px-6">{{ api.username }}</td>
+        <td class="py-2 px-6">{{ api.email }}</td>
+        <td class="py-2 px-6">
+          <p>
+            {{ api.address.street }},{{ api.address.suite }},{{
+              api.address.city
+            }}
+          </p>
+        </td>
+        <td class="py-2 px-6">
+          <button
+            routerLink="/edit/:id {{ api.id }}"
+            type="button"
+            class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          >
+            Edit
+          </button>
+          <button
+            (click)="deleterow(api.id)"
+            type="button"
+            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
