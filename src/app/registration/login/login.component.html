@@ -1,7 +1,12 @@
 <div class="px-5">
   <div><h2>Whats is Parameter Deep Understanding</h2></div>
   <div class="flex gap-3">
-    <input class="border border-black" #user type="text" />
+    <input
+      class="border border-black"
+      (keydown)="restrictZero($event)"
+      maxlength="3"
+      type="text"
+    />
     <button
       type="button"
       (click)="getvalue(sum)"
@@ -9,9 +14,5 @@
     >
       Click Me
     </button>
-  </div>
-
-  <div>
-    <h1>{{ getval }}</h1>
   </div>
 </div>
